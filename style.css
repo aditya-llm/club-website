@@ -1,0 +1,833 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --color-dark: #333;
+    --color-light: #fff;
+    --color-gray: #555;
+    --gradient-bg: linear-gradient(90deg, #fafff5, #f8f0ff, #f0faff);
+    --gradient-btn: linear-gradient(90deg, #8A2BE2, #4169E1);
+    --gradient-card1: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+    --gradient-card2: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    --gradient-card3: linear-gradient(135deg, #84fab0, #8fd3f4);
+    --gradient-text: linear-gradient(90deg, #db00ff, #b515f2, #ff00c3);
+    --cta-button:#90EE90;
+    --icon-color:rgba(255, 255, 255, 0.2);
+    --footer-color: #fdf6ff;
+}
+
+/* --- Dark Mode Styles & Variables --- */
+:root.dark-mode {
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --color-dark: #f0f0f0;
+    --color-light: #121212;
+    --color-gray: #aaa;
+    --gradient-bg: linear-gradient(90deg, #1a1a1a, #2a2a2a, #1f1f1f);
+    --gradient-btn: linear-gradient(90deg, #9370DB, #6495ED);
+    --gradient-card1: linear-gradient(135deg, #6a5acd, #483d8b);
+    --gradient-card2: linear-gradient(135deg, #7b68ee, #ba55d3);
+    --gradient-card3: linear-gradient(135deg, #20b2aa, #5f9ea0);
+    --gradient-text: linear-gradient(90deg, #ff6ec7, #c71585, #ff1493);
+    --cta-button:#90EE90;
+    --icon-color:rgba(255, 255, 255, 0.2);
+    --footer-color: #4d494e;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-dark);
+    background: var(--gradient-bg);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    border-radius: 20px; /* Adjust as needed for desired roundness */
+    margin: 1rem 5%; /* Add margin to lift it from edges and show background */
+    padding: 1rem 3%; /* Adjusted padding */
+    top: 1rem; /* Adjust top position due to margin */
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Optional: add a subtle shadow */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: var(--font-heading);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #8A2BE2;
+}
+
+.cta-button {
+    background-color: var(--cta-button);
+    color: var(--color-dark);
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: transform 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero {
+    text-align: center;
+    padding: 6rem 5%;
+}
+
+.hero h2 {
+    font-size: 1.2rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--color-gray);
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin: 1rem 0;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--color-gray);
+}
+
+.hero-cta {
+    background: var(--gradient-btn);
+    color: var(--color-light);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-block;
+    transition: transform 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.hero-cta:hover {
+    transform: scale(1.05);
+}
+
+/* --- Features Section --- */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 5%;
+    flex-wrap: wrap;
+}
+
+.card {
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    color: var(--color-light);
+    max-width: 350px;
+    flex-grow: 1;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle background pattern */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M-10 10c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8-8 3.6-8 8zm20 20c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8-8 3.6-8 8zm20 20c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8-8 3.6-8 8zm20 20c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8-8 3.6-8 8z" fill-opacity=".05" fill="%23FFF"/></svg>');
+    opacity: 0.5;
+}
+
+
+.card-1 { background-image: var(--gradient-card1); }
+.card-2 { background-image: var(--gradient-card2); }
+.card-3 { background-image: var(--gradient-card3); }
+
+.card .icon-container {
+    background: var(--icon-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- About Section --- */
+.about-section {
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    text-align: left;
+}
+
+.about-content img {
+    max-width: 50%;
+    border-radius: 20px;
+}
+
+.about-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.about-content p {
+    color: var(--color-gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+#contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--color-light);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#contact-form input, #contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+#contact-form textarea {
+    resize: vertical;
+    margin-bottom: 1.5rem;
+}
+
+/* Styling for the page-hero section on new pages */
+.page-hero {
+    padding: 120px 5% 60px; /* Adjust padding to look good on top */
+    text-align: center;
+    background-color: #f7f9fc; /* Light background for contrast */
+}
+
+.page-hero h1 {
+    font-size: 3.5rem;
+    color: #1a1a2e;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
+}
+
+.page-hero p {
+    font-size: 1.1rem;
+    color: #6a6a80;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Generic Grid for Gallery/Projects Content */
+.gallery-grid, .projects-grid {
+    padding: 80px 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.gallery-item, .project-item {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover, .project-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img, .project-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item h3, .project-item h3 {
+    padding: 15px 20px 5px;
+    font-size: 1.5rem;
+    color: #1a1a2e;
+}
+
+.gallery-item p, .project-item p {
+    padding: 0 20px 15px;
+    color: #6a6a80;
+    font-size: 0.95rem;
+}
+
+.project-item a {
+    display: inline-block;
+    padding: 0 20px 20px;
+    color: #9333ea; /* Use your purple color */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* TEAM SECTION STYLES*/
+.team-section {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: var(--gradient-bg); /* Ensures contrast if the surrounding sections have light backgrounds */
+}
+
+/* Title Styling (Matching the uploaded image) */
+.team-section .section-title {
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    color: #1a1a2e; /* Your dark text color */
+    margin-bottom: 5px;
+}
+
+.team-section .title-underline {
+    width: 60px;
+    height: 3px;
+    background-color: #f7a35d; /* Orange color from the event image (use your brand accent color) */
+    margin: 0 auto 20px;
+}
+
+.team-section .team-intro {
+    font-size: 1.1rem;
+    color: #6a6a80;
+    max-width: 600px;
+    margin: 0 auto 50px;
+}
+
+/* Team Members Grid */
+.team-members-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* Individual Team Member Card */
+
+.team-member-card {
+    flex-basis: calc(33.333% - 40px); /* 3 cards per row on desktop, minus the gap */
+    max-width: 300px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.team-member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.member-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    object-fit: cover;
+}
+
+.team-member-card h3 {
+    font-size: 1.5rem;
+    color: #1a1a2e;
+    margin: 0 0 5px 0;
+}
+
+.member-role {
+    font-size: 1rem;
+    color: #9333ea; /* Using your purple accent color for the role */
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.member-social a {
+    color: #6a6a80;
+    font-size: 1.2rem;
+    margin: 0 8px;
+    transition: color 0.3s ease;
+}
+
+.member-social a:hover {
+    color: #9333ea; /* Hover color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .team-member-card {
+        flex-basis: calc(50% - 40px); /* 2 cards per row on smaller tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .team-member-card {
+        flex-basis: 100%; /* 1 card per row on mobile */
+        max-width: 350px;
+    }
+    .team-section .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Styling for the new Team Role Grouping */
+
+.team-role-group {
+    /* Add space between different role groups */
+    margin-top: 60px; 
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.role-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 30px;
+    /* You can add a subtle border or line here if you like, for now, we just center it */
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0; /* Light divider line */
+    padding-bottom: 15px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Ensure the grid still centers within the new group container */
+.team-members-grid {
+    /* You already have this in style.css, but this ensures it is applied correctly */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* stats counter section styles */
+.stats-counter-section {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.stat-number {
+    /* Large, clean font style matching the image */
+    font-size: 3.5rem; 
+    font-weight: 400;
+    color: #1a1a2e;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-underline {
+    width: 40px;
+    height: 2px;
+    background-color: #1a1a2e; /* Dark underline color */
+    margin: 0 auto 10px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #6a6a80;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .stat-number {
+        font-size: 3rem;
+    }
+}
+
+/* Events Hero Section */
+.events-hero-section {
+    text-align: center;
+    padding: 120px 5% 40px;
+}
+
+.events-hero-section .main-heading {
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    color: #1a1a2e;
+    margin-bottom: 5px;
+}
+
+.events-hero-section .heading-underline {
+    width: 60px;
+    height: 3px;
+    background-color: #f7a35d; /* Orange color from the image */
+    margin: 0 auto 30px;
+}
+
+.events-hero-section .intro-text {
+    font-size: 1rem;
+    color: #6a6a80;
+    max-width: 650px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+/* Event Listing and Card Styling */
+.event-listing-section {
+    padding: 20px 5% 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.event-card {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.event-details-left {
+    flex-basis: 25%; /* Takes up roughly 1/4 of the card space */
+    text-align: center;
+    padding-right: 20px;
+    border-right: 1px solid #eee;
+}
+
+.event-date {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 0 0 5px 0;
+}
+
+.event-speaker {
+    font-size: 0.95rem;
+    color: #6a6a80;
+}
+
+.event-image-container {
+    flex-basis: 15%; /* Space for the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+}
+
+/* Styling for the diamond-shaped image container */
+.event-image-container {
+    /* Use CSS clip-path to create the diamond shape */
+    --size: 120px;
+    width: var(--size);
+    height: var(--size);
+    background-color: #f7a35d; /* Background for the diamond shape */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    overflow: hidden;
+    position: relative;
+    transform: rotate(45deg); /* Rotate to make it a diamond */
+}
+
+.event-image {
+    width: 150%;
+    height: 150%;
+    object-fit: cover;
+    transform: rotate(-45deg); /* Counter-rotate the image to be upright */
+    position: absolute;
+    top: -25%;
+    left: -25%;
+}
+
+.event-details-right {
+    flex-basis: 60%; /* Takes up the remaining space */
+    padding-left: 20px;
+}
+
+.event-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 0 0 10px 0;
+}
+
+.event-description {
+    font-size: 1rem;
+    color: #6a6a80;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .event-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .event-details-left {
+        flex-basis: auto;
+        border-right: none;
+        padding-right: 0;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .event-image-container {
+        padding: 20px 0;
+        order: -1; /* Move image to the top on mobile */
+    }
+
+    .event-details-right {
+        flex-basis: auto;
+        padding-left: 0;
+        text-align: left;
+    }
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--footer-color);
+    padding: 5rem 5% 2rem;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.footer-about, .footer-links {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-about .logo {
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.footer-about p {
+    color: var(--color-gray);
+    line-height: 1.7;
+    margin-bottom: 0.7rem;
+}
+
+.footer-about i {
+    margin-right: 0.5rem;
+    color: #8A2BE2;
+}
+
+.footer-links h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: var(--color-gray);
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #8A2BE2;
+}
+
+.footer-bottom {
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
+    text-align: center;
+    color: var(--color-gray);
+}
+
+.social-icons {
+    margin-bottom: 1rem;
+}
+
+.social-icons a {
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    color: var(--color-gray);
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #8A2BE2;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        text-align: center;
+        padding: 1rem 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 1rem 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-content img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
